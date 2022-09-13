@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale =1.0">
+        <title>Fractal.JS</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Corben:wght@700&display=swap&effect=anaglyph" rel="stylesheet">
+        <link rel= "stylesheet" href="style.css">
+
+    </head>
+
+    <body>
+        <div id = "container">
+            <canvas id = "canvas1"></canvas>
+            <div id = "controls">
+                <p>Select Pattern:</p>
+                <br>
+                <input type = "radio" name ="pattern" id = "mandelbrot" checked>
+                <label for = "mandelbrot">Mandelbrot</label>
+                <br>
+                <input type = "radio" name ="pattern" id = "julia">
+                <label for = "julia">Julia</label>
+            </div>
+        </div>
+        
+        <script src = "fractal.js"></script>
+    </body>
+    <!-- <canvas width = "600" height="600" ></canvas>
+
+   <script>
+    var canvas  = document.querySelector('canvas');
+    var context = canvas.getContext('2d');
+
+    context.fillRect(100,100,400,400)
+
+   </script> -->
+    
+</html>
