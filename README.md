@@ -1,2 +1,2 @@
 # Fractal.JS
-Fractal generator using JS 
+Fractal Art Generator using JS 

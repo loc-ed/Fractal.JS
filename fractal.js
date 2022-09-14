@@ -10,32 +10,28 @@ window.addEventListener('load', function() {
         constructor(canvasWidth, canvasHeight) {
             this.canvasWidth = canvasWidth;
             this.canvasHeight = canvasHeight;
-            // this.iteration = 0
-            // this.max_iterations = 100
-            // this.context = context;
-            // this.x = 0;
-            // this.y = 0;
+            this.max_iterations = 100;
+            this.pattern = "mandelbrot";
         }
 
         drawMandelbrot(context) {
             var imageData = context.createImageData(this.canvasWidth, this.canvasHeight);
             var iData = imageData.data;
 
-            max_iterations = 100;
             for (var i = 0; i < this.canvasHeight; i++) {
                 for (var j = 0; j < this.canvasWidth; j++) {
 
                     //limit the axis 
-                    x0 = -2.0 + j * 3.0 /this.canvasWidth         //(-2,1)
-                    y0 = -1.0 + i * 2.0 / this.canvasHeight       //(-1,1)
+                    var x0 = -2.0 + j * 3.0 /this.canvasWidth         //(-2,1)
+                    var y0 = -1.0 + i * 2.0 / this.canvasHeight       //(-1,1)
 
-                    x = 0;
-                    y = 0;
-                    iteration = 0
+                    var x = 0;
+                    var y = 0;
+                    var iteration = 0
 
-                    while ((x * x + y * y < 4) && (iteration < max_iterations)) {
-                        x_n = x * x - y * y + x0;
-                        y_n = 2 * x * y + y0;
+                    while ((x * x + y * y < 4) && (iteration < this.max_iterations)) {
+                        var x_n = x * x - y * y + x0;
+                        var y_n = 2 * x * y + y0;
                         x = x_n;
                         y = y_n;
                         iteration++;
@@ -57,22 +53,21 @@ window.addEventListener('load', function() {
             var imageData = context.createImageData(this.canvasWidth, this.canvasHeight);
             var iData = imageData.data;
 
-            x0 = -0.4;
-            y0 = -0.6;
+            var x0 = -0.4;
+            var y0 = -0.6;
 
-            max_iterations = 100;
             for (var i = 0; i < this.canvasHeight; i++) {
                 for (var j = 0; j < this.canvasWidth; j++) {
             
                     // limit the axis
-                    x = -1.5 + j * 3.0 / this.canvasWidth;
-                    y = -1.0 + i * 2.0 / this.canvasHeight;
+                    var x = -1.5 + j * 3.0 / this.canvasWidth;
+                    var y = -1.0 + i * 2.0 / this.canvasHeight;
                     
-                    iteration = 0;
+                    var iteration = 0; 
                     
-                    while ((x * x + y * y < 4) && (iteration < max_iterations)) {
-                        x_n = x * x - y * y + x0;
-                        y_n = 2 * x * y + y0;
+                    while ((x * x + y * y < 4) && (iteration < this.max_iterations)) {
+                        var x_n = x * x - y * y + x0;
+                        var y_n = 2 * x * y + y0;
                         x = x_n;
                         y = y_n;
                         iteration++;
@@ -88,59 +83,41 @@ window.addEventListener('load', function() {
         }
     
         //draw currenty active pattern on canvas
-        render(context ,pattern) {
+        render(context) {
             context.clearRect(0,0,this.canvasWidth,this.canvasHeight);
             
-            if (pattern == "mandelbrot") {
-                drawMandelbrot()
+            if (this.pattern == "mandelbrot") {
+                this.drawMandelbrot(context)
             }      
-            if (pattern == "julia") {
-                drawJulia()
+            if (this.pattern == "julia") {
+                this.drawJulia(context)
             }
         }
 
-        // //cycle between patterns 
-        // update() {
-    
-        // }
-
-        setPattern() {
-
+        setPattern(pattern) {
+            this.pattern = pattern
         }
     }
 
     const fractal = new Fractal(canvas.width, canvas.height);
-
     function animate() {
 
-        fractal.render(ctx, "mandelbrot")
-        // fractal.update()
-        // requestAnimationFrame(animate)
+        fractal.render(ctx)
+        requestAnimationFrame(animate)
     }
 
     animate()
+  
+    const mandelbrot = document.getElementById('mandelbrot');
+    mandelbrot.addEventListener('click', function() {
+        fractal.setPattern("mandelbrot")
 
-    const mandelbrot = document.getElementById('pattern');
-    pattern.addEventListener('click', function() {
-        
+    });
+    const julia = document.getElementById('julia');
+    julia.addEventListener('click', function() {
+        fractal.setPattern("julia")
 
-    })
+    });
 
 });
-
-
-
-
-
-// generated responsively to screen size 
-// var canvas  = document.querySelector('canvas');
-// var context = canvas.getContext('2d');
-
-// context.fillRect(100,100,400,400)
-
-//render function - select which pattern you'd like to generate
-
-//mandelbrot pattern
-
-//julia pattern
 
