@@ -19,21 +19,28 @@
                 <input type = "radio" name ="pattern" id = "mandelbrot" checked>
                 <label for = "mandelbrot">Mandelbrot</label>
                 <br>
+                <br>
                 <input type = "radio" name ="pattern" id = "julia">
                 <label for = "julia">Julia</label>
+                <br>
+                <br>
+                <label for="julia-select">c value : </label>
+
+                <select name="julia-set" id="julia-select">
+                    <option value="1">-0.4 - 0.6i</option>
+                    <option value="2">-.79 + .15i</option>
+                    <option value="3">-.162 + 1.04i</option>
+                    <option value="4">.3 - .01i</option>
+                    <option value="5">-1.476 + 0i</option>
+                    <option value="6">-.12 - .77i</option>
+                    <option value="7">.28 + .008i</option>
+                </select>
+                
+             
+        
             </div>
         </div>
         
         <script src = "fractal.js"></script>
     </body>
-    <!-- <canvas width = "600" height="600" ></canvas>
-
-   <script>
-    var canvas  = document.querySelector('canvas');
-    var context = canvas.getContext('2d');
-
-    context.fillRect(100,100,400,400)
-
-   </script> -->
-    
 </html>
